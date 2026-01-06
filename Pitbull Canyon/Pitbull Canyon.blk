@@ -210,7 +210,7 @@ triggers{
     conditions{
       unitWhenInArea{
         math:t="3D"
-        object_type:t="isAlive"
+        object_type:t="isTeamA"
         object_marking:i=0
         object_var_name:t=""
         object_var_comp_op:t="equal"
