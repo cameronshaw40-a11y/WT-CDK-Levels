@@ -226,6 +226,21 @@ triggers{
         useForTriggerFiltered:b=yes
         isImmortal:b=no
       }
+
+      playHint{
+        hintType:t="standard"
+        name:t="NOT SAFE"
+        action:t="show"
+        shouldFadeOut:b=no
+        isOverFade:b=no
+        time:r=1
+        priority:i=0
+        target_marking:i=0
+        object_var_name:t=""
+        object_var_comp_op:t="equal"
+        object_var_value:i=0
+        useForTriggerFiltered:b=yes
+      }
     }
 
     else_actions{
@@ -234,12 +249,27 @@ triggers{
         useForTriggerFiltered:b=yes
         isImmortal:b=yes
       }
+
+      playHint{
+        hintType:t="standard"
+        name:t="SAFE!"
+        action:t="show"
+        shouldFadeOut:b=no
+        isOverFade:b=no
+        time:r=1
+        priority:i=0
+        target_marking:i=0
+        object_var_name:t=""
+        object_var_comp_op:t="equal"
+        object_var_value:i=0
+        useForTriggerFiltered:b=yes
+      }
     }
   }
 
   Dangerzone{
     is_enabled:b=yes
-    comments:t="Controls Firing of Buks"
+    comments:t="Controls Danger Zone"
 
     props{
       actionsType:t="PERFORM_ONE_BY_ONE"
@@ -256,7 +286,7 @@ triggers{
     conditions{
       unitWhenInArea{
         math:t="3D"
-        object_type:t="isAlive"
+        object_type:t="isTeamA"
         object_marking:i=0
         object_var_name:t=""
         object_var_comp_op:t="equal"
@@ -273,12 +303,28 @@ triggers{
         engineFire:b=no
 
         controls{
-          thrust_mult:r=0
+          thrust_mult:r=-1
         }
 
         plane{
-          thrust_mult:r=0
+          thrust_mult:r=-1
         }
+      }
+
+      playHint{
+        hintType:t="standard"
+        name:t="Danger Zone Entered"
+        action:t="warning"
+        shouldFadeOut:b=no
+        isOverFade:b=no
+        time:r=-1
+        priority:i=0
+        target_marking:i=0
+        object_var_name:t=""
+        object_var_comp_op:t="equal"
+        object_var_value:i=0
+        shouldBlink:b=no
+        useForTriggerFiltered:b=yes
       }
     }
 
@@ -294,6 +340,21 @@ triggers{
         plane{
           thrust_mult:r=1
         }
+      }
+
+      playHint{
+        hintType:t="standard"
+        name:t="Exited Danger Zone"
+        action:t="show"
+        shouldFadeOut:b=no
+        isOverFade:b=no
+        time:r=1
+        priority:i=0
+        target_marking:i=0
+        object_var_name:t=""
+        object_var_comp_op:t="equal"
+        object_var_value:i=0
+        useForTriggerFiltered:b=yes
       }
     }
   }
@@ -3273,7 +3334,7 @@ units{
 areas{
   "Playing Field"{
     type:t="Box"
-    tm:m=[[9961.95, 0, -871.557] [0, 10000, 0] [1045.87, 0, 11954.3] [-1300, 0, -8100]]
+    tm:m=[[15756.9, 0, -2778.37] [0, 10000, 0] [2083.78, 0, 11817.7] [-3300, 0, -7884.82]]
     objLayer:i=0
 
     props{}
@@ -3281,7 +3342,7 @@ areas{
 
   "Danger Zone"{
     type:t="Box"
-    tm:m=[[9961.95, 0, -871.557] [0, 7500, 0] [1045.87, 0, 11954.3] [-1300, 2500, -8100]]
+    tm:m=[[15756.9, 0, -2778.37] [0, 8000, 0] [2083.78, 0, 11817.7] [-3300, 2000, -7884.82]]
     objLayer:i=0
 
     props{}
@@ -3289,7 +3350,7 @@ areas{
 
   "Runner Spawn"{
     type:t="Sphere"
-    tm:m=[[-99.6195, 0, 8.71559] [0, 100, 0] [-148.165, 0, -1693.53] [1100, 2500, -24700]]
+    tm:m=[[-99.6195, 0, 8.71559] [0, 100, 0] [-148.165, 0, -1693.53] [-300, 2500, -24500]]
     objLayer:i=0
 
     props{}
@@ -3305,7 +3366,7 @@ areas{
 
   "Map Area"{
     type:t="Box"
-    tm:m=[[9961.95, 0, -871.557] [0, 10000, 0] [3137.62, 0, 35863] [-1300, 0, -8100]]
+    tm:m=[[15756.9, 0, -2778.37] [0, 10000, 0] [6251.35, 0, 35453.1] [-3300, 0, -7900]]
     objLayer:i=0
 
     props{}
@@ -3321,7 +3382,7 @@ areas{
 
   "Runner Lookat"{
     type:t="Point"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-7100, 2500, -25100]]
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-10800, 2500, -20300]]
     objLayer:i=0
 
     props{}
