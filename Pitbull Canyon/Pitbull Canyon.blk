@@ -98,7 +98,7 @@ triggers{
 
   "Map Border"{
     is_enabled:b=yes
-    comments:t=""
+    comments:t="Sets Map border"
 
     props{
       actionsType:t="PERFORM_ONE_BY_ONE"
@@ -129,7 +129,7 @@ triggers{
 
   Spawns{
     is_enabled:b=yes
-    comments:t=""
+    comments:t="Initialises Spawns"
 
     props{
       actionsType:t="PERFORM_ONE_BY_ONE"
@@ -144,7 +144,7 @@ triggers{
     conditions{}
     actions{
       missionMarkAsRespawnPoint{
-        loc_name:t=""
+        loc_name:t="Runner Spawn"
         spawnEffect:b=no
         isStrictSpawn:b=no
         resetStrictSpawnIndex:b=no
@@ -162,10 +162,11 @@ triggers{
         radius:r=-1
         target:t="Runner Spawn"
         team:t="A"
+        spawnArrangeTo:t="Runner Lookat"
       }
 
       missionMarkAsRespawnPoint{
-        loc_name:t=""
+        loc_name:t="Pitbull Spawn"
         spawnEffect:b=no
         isStrictSpawn:b=no
         resetStrictSpawnIndex:b=no
@@ -183,6 +184,7 @@ triggers{
         radius:r=-1
         target:t="Pitbull Spawn"
         team:t="B"
+        spawnArrangeTo:t="Pitbull Lookat"
       }
     }
 
@@ -191,12 +193,12 @@ triggers{
 
   Safety{
     is_enabled:b=yes
-    comments:t=""
+    comments:t="Manages destructability of Runners"
 
     props{
       actionsType:t="PERFORM_ONE_BY_ONE"
       conditionsType:t="ALL"
-      enableAfterComplete:b=no
+      enableAfterComplete:b=yes
     }
 
     events{
@@ -218,8 +220,82 @@ triggers{
       }
     }
 
-    actions{}
-    else_actions{}
+    actions{
+      unitSetProperties{
+        object:t="Runner Squad"
+        useForTriggerFiltered:b=yes
+        isImmortal:b=no
+      }
+    }
+
+    else_actions{
+      unitSetProperties{
+        object:t="Runner Squad"
+        useForTriggerFiltered:b=yes
+        isImmortal:b=yes
+      }
+    }
+  }
+
+  Dangerzone{
+    is_enabled:b=yes
+    comments:t="Controls Firing of Buks"
+
+    props{
+      actionsType:t="PERFORM_ONE_BY_ONE"
+      conditionsType:t="ALL"
+      enableAfterComplete:b=yes
+    }
+
+    events{
+      periodicEvent{
+        time:r=1
+      }
+    }
+
+    conditions{
+      unitWhenInArea{
+        math:t="3D"
+        object_type:t="isAlive"
+        object_marking:i=0
+        object_var_name:t=""
+        object_var_comp_op:t="equal"
+        check_objects:t="any"
+        object:t="Runner Squad"
+        target:t="Danger Zone"
+      }
+    }
+
+    actions{
+      unitSetProperties{
+        object:t="Runner Squad"
+        useForTriggerFiltered:b=yes
+        engineFire:b=no
+
+        controls{
+          thrust_mult:r=0
+        }
+
+        plane{
+          thrust_mult:r=0
+        }
+      }
+    }
+
+    else_actions{
+      unitSetProperties{
+        object:t="Runner Squad"
+        useForTriggerFiltered:b=yes
+
+        controls{
+          thrust_mult:r=1
+        }
+
+        plane{
+          thrust_mult:r=1
+        }
+      }
+    }
   }
 }
 
@@ -1675,7 +1751,7 @@ units{
 
   armada{
     name:t="Pitbull00"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 300]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-2800, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -1720,7 +1796,7 @@ units{
 
   armada{
     name:t="Pitbull01"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 400]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-2700, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -1765,7 +1841,7 @@ units{
 
   armada{
     name:t="Pitbull02"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 500]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-2600, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -1810,7 +1886,7 @@ units{
 
   armada{
     name:t="Pitbull03"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 600]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-2500, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -1855,7 +1931,7 @@ units{
 
   armada{
     name:t="Pitbull04"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 700]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-2400, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -1900,7 +1976,7 @@ units{
 
   armada{
     name:t="Pitbull05"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 800]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-2300, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -1945,7 +2021,7 @@ units{
 
   armada{
     name:t="Pitbull06"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 900]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-2200, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -1990,7 +2066,7 @@ units{
 
   armada{
     name:t="Pitbull07"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1000]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-2100, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2035,7 +2111,7 @@ units{
 
   armada{
     name:t="Pitbull08"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1100]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-2000, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2080,7 +2156,7 @@ units{
 
   armada{
     name:t="Pitbull09"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1200]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1900, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2125,7 +2201,7 @@ units{
 
   armada{
     name:t="Pitbull10"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1300]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1800, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2170,7 +2246,7 @@ units{
 
   armada{
     name:t="Pitbull11"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1400]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1700, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2215,7 +2291,7 @@ units{
 
   armada{
     name:t="Pitbull12"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1500]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1600, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2260,7 +2336,7 @@ units{
 
   armada{
     name:t="Pitbull13"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1600]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1500, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2305,7 +2381,7 @@ units{
 
   armada{
     name:t="Pitbull14"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1700]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1400, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2350,7 +2426,7 @@ units{
 
   armada{
     name:t="Pitbull15"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1800]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1300, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2395,7 +2471,7 @@ units{
 
   armada{
     name:t="Pitbull16"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1900]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1200, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2440,7 +2516,7 @@ units{
 
   armada{
     name:t="Pitbull17"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2000]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1100, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2485,7 +2561,7 @@ units{
 
   armada{
     name:t="Pitbull18"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2100]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-1000, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2530,7 +2606,7 @@ units{
 
   armada{
     name:t="Pitbull19"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2200]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-900, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2575,7 +2651,7 @@ units{
 
   armada{
     name:t="Pitbull20"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2300]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-800, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2620,7 +2696,7 @@ units{
 
   armada{
     name:t="Pitbull21"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2400]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-700, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2665,7 +2741,7 @@ units{
 
   armada{
     name:t="Pitbull22"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2500]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-600, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2710,7 +2786,7 @@ units{
 
   armada{
     name:t="Pitbull23"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2600]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-500, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2755,7 +2831,7 @@ units{
 
   armada{
     name:t="Pitbull24"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2700]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-400, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2800,7 +2876,7 @@ units{
 
   armada{
     name:t="Pitbull25"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2800]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-300, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2845,7 +2921,7 @@ units{
 
   armada{
     name:t="Pitbull26"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 2900]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-200, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2890,7 +2966,7 @@ units{
 
   armada{
     name:t="Pitbull27"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 3000]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [-100, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2935,7 +3011,7 @@ units{
 
   armada{
     name:t="Pitbull28"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 3100]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [0, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -2980,7 +3056,7 @@ units{
 
   armada{
     name:t="Pitbull29"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 3200]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [100, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -3025,7 +3101,7 @@ units{
 
   armada{
     name:t="Pitbull30"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 3300]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [200, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -3070,7 +3146,7 @@ units{
 
   armada{
     name:t="Pitbull31"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 3400]]
+    tm:m=[[7.54979e-08, 0, -1] [0, 1, 0] [1, 0, 7.54979e-08] [300, 2500, 300]]
     unit_class:t="dummy_plane"
     objLayer:i=1
     closed_waypoints:b=no
@@ -3115,7 +3191,7 @@ units{
 
   squad{
     name:t="Pitbull Squad"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2800, 2500, 1850]]
+    tm:m=[[-1, 0, -1.50996e-07] [0, 1, 0] [1.50996e-07, 0, -1] [-2400, 2500, 600]]
 
     props{
       squad_members:t="Pitbull00"
@@ -3155,7 +3231,7 @@ units{
 
   squad{
     name:t="Runner Squad"
-    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-2900, 2500, 1850]]
+    tm:m=[[8.19564e-08, 0, 1] [0, 1, 0] [-1, 0, 8.19564e-08] [-2600, 2500, 1850]]
 
     props{
       squad_members:t="Runner00"
@@ -3230,6 +3306,22 @@ areas{
   "Map Area"{
     type:t="Box"
     tm:m=[[9961.95, 0, -871.557] [0, 10000, 0] [3137.62, 0, 35863] [-1300, 0, -8100]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  "Pitbull Lookat"{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-7100, 1200, -8000]]
+    objLayer:i=0
+
+    props{}
+  }
+
+  "Runner Lookat"{
+    type:t="Point"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [-7100, 2500, -25100]]
     objLayer:i=0
 
     props{}
