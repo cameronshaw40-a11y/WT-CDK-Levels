@@ -301,12 +301,6 @@ triggers{
       unitSetProperties{
         object:t="Runner Squad"
         useForTriggerFiltered:b=yes
-        engineFire:b=no
-
-        controls{
-          thrust_mult:r=-1
-        }
-
         plane{
           thrust_mult:r=-1
         }
@@ -333,11 +327,6 @@ triggers{
       unitSetProperties{
         object:t="Runner Squad"
         useForTriggerFiltered:b=yes
-
-        controls{
-          thrust_mult:r=1
-        }
-
         plane{
           thrust_mult:r=1
         }
