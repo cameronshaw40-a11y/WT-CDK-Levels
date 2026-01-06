@@ -1,0 +1,391 @@
+noteForCuriousHumanBeings:t="HANDS OFF!!!  This file and those in sub-folders here are used by DagorEditor, don't touch them!!!"
+"render shadows":b=yes
+"render VSM shadows":b=yes
+"use SSAO":b=yes
+"use SSR":b=yes
+"no sun":b=no
+"no amb":b=no
+"no envi refl":b=no
+"no transp":b=no
+"no postfx":b=no
+shadowQ:i=0
+rdbgType:i=0
+rdbgUseNmap:b=yes
+rdbgUseDtex:b=yes
+rdbgUseLt:b=yes
+rdbgUseChrome:b=yes
+environment_settings_fn:t=""
+paint_details_tex:t=""
+viewportLayoutId:i=127
+animateViewports:b=yes
+useOccludersAndPortals:b=no
+use_dyn_lighting:b=no
+lastPlugin:t="mission_editor"
+
+render{
+  renderType:i=2
+}
+
+ambientWind{
+  enabled:b=no
+  windAzimuth:r=40
+  windStrength:r=1
+  windLevelPath:t=""
+
+  ambientWind{
+    windMapBorders:p4=-2048, -2048, 2048, 2048
+    windNoiseStrength:r=2
+    windNoiseSpeed:r=2
+    windNoiseScale:r=70
+    windNoisePerpendicular:r=0.5
+  }
+}
+
+viewport0{
+  orthogonalProjection:b=no
+  projectionFov:r=1.57
+  projectionFarPlane:r=15000
+  projectionNearPlane:r=0.1
+  orthogonalZoom:r=1
+  currentProjection:t="Perspective"
+  viewMatrix0:p3=0.423471, -0.477525, -0.769832
+  viewMatrix1:p3=-5.58793e-06, 0.849788, -0.527125
+  viewMatrix2:p3=0.90591, 0.223226, 0.359858
+  viewMatrix3:p3=18582.4, 2034.33, 18668.7
+  wireframe:b=no
+  viewportAxis:b=yes
+  show_stats:b=no
+  stat3d:b=no
+  stat3d_opaque:b=no
+  show_camera_stats:b=yes
+  show_camera_pos:b=no
+  show_camera_dist:b=no
+  show_camera_fov:b=no
+  show_camera_speed:b=no
+  show_camera_turbo_speed:b=no
+
+  displayed_stat3d_list{
+    stat:t="cpu frame"
+    stat:t="triangles"
+    stat:t="dip"
+    stat:t="lock_vbib"
+    stat:t="rt"
+    stat:t="shaders"
+    stat:t="instances"
+    stat:t="rpasses"
+    stat:t="dip/unit"
+    stat:t="tri/unit"
+  }
+}
+
+freeCamera{
+  move_step:r=10
+  rotation_step:r=18
+  strife_step:r=10
+  control_multiplier:r=100
+  speed_change_multiplier:r=2
+
+  commonInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  hangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  vangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+}
+
+maxCamera{
+  move_step:r=8
+  rotation_step:r=18
+  strife_step:r=18
+  control_multiplier:r=12
+  speed_change_multiplier:r=2
+
+  commonInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  hangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  vangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+}
+
+fpsCamera{
+  move_step:r=3.5
+  rotation_step:r=18
+  strife_step:r=3.5
+  control_multiplier:r=3.5
+  speed_change_multiplier:r=2
+  height:r=1.8
+  half_height:r=1.2
+  step_height:r=0.5
+  step_half_height:r=0.2
+  radius:r=0.3
+  gravity:r=9.8
+  jumpSpeed:r=4
+
+  commonInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  hangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  vangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+}
+
+tpsCamera{
+  move_step:r=3.5
+  rotation_step:r=18
+  strife_step:r=3.5
+  control_multiplier:r=3.5
+  speed_change_multiplier:r=2
+  height:r=1.8
+  half_height:r=1.2
+  step_height:r=0.5
+  step_half_height:r=0.2
+  radius:r=0.3
+  gravity:r=9.8
+  jumpSpeed:r=4
+  minDist:r=4.5
+  maxMaxDist:r=10
+  maxOutSpeed:r=5
+  minVAng:r=-1.53589
+  maxVAng:r=1.39626
+
+  commonInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  hangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  vangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+}
+
+carCamera{
+  move_step:r=3.5
+  rotation_step:r=18
+  strife_step:r=3.5
+  control_multiplier:r=3.5
+  speed_change_multiplier:r=2
+  height:r=1.8
+  half_height:r=1.2
+  step_height:r=0.5
+  step_half_height:r=0.2
+  radius:r=0.3
+  gravity:r=9.8
+  jumpSpeed:r=4
+  minDist:r=4.5
+  maxMaxDist:r=10
+  maxOutSpeed:r=5
+  minVAng:r=-1.53589
+  maxVAng:r=1.39626
+
+  commonInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  hangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+
+  vangInertia{
+    stop:r=0.05
+    move:r=0.9
+  }
+}
+
+grid{
+  grid_visible0:b=no
+  grid_visible1:b=no
+  grid_visible2:b=no
+  grid_visible3:b=no
+  step:r=100
+  angle_step:r=2.5
+  scale_step:r=10
+  grid_height:r=0
+  move_snap_on:b=yes
+  rotate_snap_on:b=yes
+  scale_snap_on:b=yes
+  draw_major_lines:b=yes
+
+  infinite_grid{
+    use_infinite_grid:b=yes
+    major_line_color:c=0, 0, 0, 255
+    minor_line_color:c=150, 150, 150, 255
+    major_line_width:r=0.05
+    minor_line_width:r=0.01
+    major_subdivisions:i=5
+  }
+}
+
+ViewportsParams{}
+local_plugin_data{
+  environment{
+    visible:b=yes
+    forceWeather:b=no
+    forceGeoDate:b=no
+    forceTime:b=no
+    forceSeed:b=no
+    latitude:r=55
+    yyyy:i=1944
+    mm:i=6
+    dd:i=6
+    timeOfDay:r=12
+    rndSeed:i=128476320
+    znzfScale:r=5
+
+    panel_state{
+      panel_0{
+        vscroll:i=-131
+      }
+
+      group_20049{
+        minimize:b=no
+      }
+
+      group_20023{
+        minimize:b=no
+      }
+
+      group_20030{
+        minimize:b=yes
+      }
+    }
+  }
+
+  _acEntMgr{
+    visible:b=yes
+  }
+
+  _collision{
+    visible:b=no
+  }
+
+  _dmEntMgr{
+    visible:b=yes
+  }
+
+  _fxEntMgr{
+    visible:b=yes
+  }
+
+  _goEntMgr{
+    visible:b=yes
+  }
+
+  _grassObj{
+    visible:b=yes
+  }
+
+  _hmapObj{
+    visible:b=yes
+  }
+
+  _lmeshObj{
+    visible:b=yes
+  }
+
+  _lmeshObjDet{
+    visible:b=yes
+  }
+
+  _navmesh{
+    visible:b=yes
+  }
+
+  _rend_ent_geom{
+    visible:b=yes
+  }
+
+  _rend_ground_obj{
+    visible:b=no
+  }
+
+  _riEntMgr{
+    visible:b=yes
+  }
+
+  _waterSurf{
+    visible:b=yes
+  }
+
+  bin_scene_view{
+    visible:b=yes
+    isDebugVisible:b=no
+    showSplines:b=yes
+    showSplinePoints:b=yes
+    maxPointVisDist:r=5000
+    showNavMesh:b=yes
+    showFrt:b=no
+    showLrt:b=no
+    showFrtWire:b=no
+    maxFrtVisDist:r=500
+    useLandMirroring:b=yes
+
+    recents{
+      fn:t="britain.bin"
+      fn:t="./air_grand_canyon.bin"
+    }
+  }
+
+  locationScene{
+    visible:b=yes
+    showEcsFxLabels:b=yes
+    showCameraFxLabels:b=yes
+    showCameraFxSpheres:b=yes
+    showAreaFxLabels:b=yes
+    showAreaFxDebugShape:b=yes
+    showUnitLoaderLabels:b=yes
+    useGameLikeCameraFxRendering:b=no
+  }
+
+  mission_editor{
+    visible:b=yes
+    trigger_panel_width:i=-1
+
+    editor_mode{
+      show_units_zones_names:b=no
+      show_waypoints:b=no
+      show_units_icons:b=yes
+      show_units_assets:b=no
+      draw_objects_axis:b=no
+      select_mode:i=20029
+    }
+
+    viewPt{
+      targetHt:r=1
+      zbias:r=0
+      zslopebias:r=0
+    }
+  }
+}

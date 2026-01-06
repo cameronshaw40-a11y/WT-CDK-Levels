@@ -1,0 +1,269 @@
+selected_tag:t=""
+bin_dump_file:t=""
+
+mission_settings{
+  player{
+    army:i=2
+    wing:t="player"
+  }
+
+  player_teamB{
+    army:i=2
+  }
+
+  mission{
+    type:t="singleMission"
+    level:t="levels/air_africa_desert.bin"
+    environment:t="Day"
+    weather:t="good"
+    locName:t="BUK M3 AI Testing"
+  }
+}
+
+imports{}
+triggers{
+  isCategory:b=yes
+  is_enabled:b=yes
+
+  Trigger_02{
+    is_enabled:b=yes
+    comments:t=""
+
+    props{
+      actionsType:t="PERFORM_ONE_BY_ONE"
+      conditionsType:t="ALL"
+      enableAfterComplete:b=no
+    }
+
+    events{
+      initMission{}
+    }
+
+    conditions{}
+    actions{
+      unitsSetSite{
+        missileChannelsMax:i=2
+        detector:t="samp-tads"
+        tracker:t="samp-tel01"
+        fireUnit:t="samp-tel01"
+        fireUnit:t="samp-tel02"
+      }
+
+      unitAttackTarget{
+        playerAttracted:b=no
+        object:t="samp-tel01"
+        attack_type:t="kill_target"
+        target:t="targ"
+      }
+    }
+
+    else_actions{}
+  }
+}
+
+mission_objectives{
+  isCategory:b=yes
+  is_enabled:b=yes
+}
+
+variables{}
+dialogs{}
+airfields{}
+effects{}
+units{
+  tankModels{
+    name:t="player"
+    tm:m=[[-4.37114e-08, 0, 1] [0, 1, 0] [-1, 0, -4.37114e-08] [21.097, 15.387, 0]]
+    unit_class:t="us_m22_locust"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t="37mm_usa_m3_APC_ammo_pack"
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=100
+    bulletsCount1:i=20
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="samp-tads"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [0, 15.1785, 11.3362]]
+    unit_class:t="ussr_buk_m3_fcs"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=100
+    bulletsCount1:i=20
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="samp-tel01"
+    tm:m=[[1, 0, 0] [0, 1, 0] [0, 0, 1] [0, 14.8019, 28.408]]
+    unit_class:t="ussr_buk_m3_launcher"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=100
+    bulletsCount1:i=20
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  tankModels{
+    name:t="samp-tel02"
+    tm:m=[[0.819152, 0, -0.573576] [0, 1, 0] [0.573576, 0, 0.819152] [35.8114, 14.302, 47.9586]]
+    unit_class:t="ussr_buk_m3_launcher"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=100
+    bulletsCount1:i=20
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=2
+      count:i=1
+      formation_type:t="rows"
+      formation_div:i=3
+      formation_step:p2=2.5, 2
+      formation_noise:p2=0.1, 0.1
+    }
+
+    way{}
+  }
+
+  armada{
+    name:t="targ"
+    tm:m=[[-1, 0, 8.74228e-08] [0, 1, 0] [-8.74228e-08, 0, -1] [7000, 1500, 0]]
+    unit_class:t="jf_17"
+    objLayer:i=1
+    closed_waypoints:b=no
+    isShipSpline:b=no
+    shipTurnRadius:r=100
+    weapons:t=""
+    bullets0:t=""
+    bullets1:t=""
+    bullets2:t=""
+    bullets3:t=""
+    bulletsCount0:i=0
+    bulletsCount1:i=0
+    bulletsCount2:i=0
+    bulletsCount3:i=0
+    crewSkillK:r=0
+    applyAllMods:b=no
+
+    props{
+      army:i=1
+      count:i=1
+      free_distance:r=70
+      floating_distance:r=50
+      minimum_distance_to_earth:r=20
+      altLimit:r=6000
+      attack_type:t="fire_at_will"
+      skill:i=4
+      aiEnabled:b=no
+      speed:r=750
+
+      plane{
+        wing_formation:t="Diamond"
+        row_distances:r=3
+        col_distances:r=3
+        super_formation:t="Diamond"
+        super_row_distances:r=1.5
+        super_col_distances:r=1.5
+        ai_skill:t="NORMAL"
+        task:t="FLY_WAYPOINT"
+      }
+    }
+
+    way{}
+  }
+}
+
+areas{}
+objLayers{
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+
+  layer{
+    enabled:b=yes
+  }
+}
+
+wayPoints{}
