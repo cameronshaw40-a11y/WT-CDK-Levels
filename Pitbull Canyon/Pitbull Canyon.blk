@@ -229,8 +229,9 @@ triggers{
 
       playHint{
         hintType:t="standard"
-        name:t="NOT SAFE"
+        name:t="!!!NOT SAFE!!!"
         action:t="show"
+        blink:b=yes
         shouldFadeOut:b=no
         isOverFade:b=no
         time:r=1
@@ -252,7 +253,7 @@ triggers{
 
       playHint{
         hintType:t="standard"
-        name:t="SAFE!"
+        name:t="SAFE"
         action:t="show"
         shouldFadeOut:b=no
         isOverFade:b=no
@@ -313,7 +314,7 @@ triggers{
 
       playHint{
         hintType:t="standard"
-        name:t="Danger Zone Entered"
+        name:t="WARNING - DANGER ZONE"
         action:t="warning"
         shouldFadeOut:b=no
         isOverFade:b=no
@@ -323,7 +324,7 @@ triggers{
         object_var_name:t=""
         object_var_comp_op:t="equal"
         object_var_value:i=0
-        shouldBlink:b=no
+        shouldBlink:b=yes
         useForTriggerFiltered:b=yes
       }
     }
@@ -340,21 +341,6 @@ triggers{
         plane{
           thrust_mult:r=1
         }
-      }
-
-      playHint{
-        hintType:t="standard"
-        name:t="Exited Danger Zone"
-        action:t="show"
-        shouldFadeOut:b=no
-        isOverFade:b=no
-        time:r=1
-        priority:i=0
-        target_marking:i=0
-        object_var_name:t=""
-        object_var_comp_op:t="equal"
-        object_var_value:i=0
-        useForTriggerFiltered:b=yes
       }
     }
   }
